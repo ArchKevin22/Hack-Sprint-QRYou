@@ -10,13 +10,11 @@ Cocoapods are required for external libraries.
 2. `pod init`
 3. `pod install`
 4. Open the file ending in `.xcworkspace`, NOT `.xcodeproj`
-----
 
 ## Features
 * Custom cards for different social situations
 * Offline, no account needed or unnecessary clutter
 * Keep all your information in one place
-----
 
 ## Credits
 
