@@ -17,6 +17,7 @@ plus the authors of all the libraries used.
 Cocoapods are required for external libraries.
 
 steps to do this on the console:
+<br>
 sudo gem install cocoapods
 <br>
 pod init
