@@ -7,14 +7,18 @@
 //
 
 import UIKit
-var myInfo = ContactInfoStruct()
+import CoreData
+var myInfo = [NSManagedObject]()
 
 class MyInfoViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var phoneField: UITextField!
+    @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var fbField: UITextField!
+    @IBOutlet weak var instagramField: UITextField!
+    @IBOutlet weak var linkedinField: UITextField!
     
     var editMode = false
     
@@ -22,11 +26,17 @@ class MyInfoViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         nameField.delegate = self
         phoneField.delegate = self
+        emailField.delegate = self
         fbField.delegate = self
+        instagramField.delegate = self
+        linkedinField.delegate = self
         
         nameField.isUserInteractionEnabled = false
         phoneField.isUserInteractionEnabled = false
+        emailField.isUserInteractionEnabled = false
         fbField.isUserInteractionEnabled = false
+        instagramField.isUserInteractionEnabled = false
+        linkedinField.isUserInteractionEnabled = false
         // Do any additional setup after loading the view.
     }
 
@@ -41,21 +51,77 @@ class MyInfoViewController: UIViewController, UITextFieldDelegate {
         checkEditMode()
     }
     
+    func saveMyself(name: String, phoneNum: String, email: String, fbName: String, instagram: String, linkedin: String) {
+        
+        guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else {
+                return
+        }
+        
+        // 1
+        let managedContext =
+            appDelegate.persistentContainer.viewContext
+        
+        // 2
+        let entity =
+            NSEntityDescription.entity(forEntityName: "Contact",
+                                       in: managedContext)!
+        
+        let contact = NSManagedObject(entity: entity,
+                                     insertInto: managedContext)
+        
+        // 3
+        contact.setValue(name, forKeyPath: "name")
+        contact.setValue(email, forKeyPath: "email")
+        contact.setValue(phoneNum, forKeyPath: "phoneNum")
+        contact.setValue(fbName, forKeyPath: "fbName")
+        contact.setValue(instagram, forKeyPath: "instagram")
+        contact.setValue(linkedin, forKeyPath: "linkedin")
+        
+        // 4
+        do {
+            try managedContext.save()
+            if (myInfo.count != 0) {
+                myInfo[0] = contact
+            }
+            else {
+                myInfo.append(contact)
+            }
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+        print(myInfo.count)
+    }
+    
     public func checkEditMode() {
         if editMode == true {
             editButton.setTitle("Save", for: UIControlState.normal)
             nameField.isUserInteractionEnabled = true
             phoneField.isUserInteractionEnabled = true
+            emailField.isUserInteractionEnabled = true
             fbField.isUserInteractionEnabled = true
+            instagramField.isUserInteractionEnabled = true
+            linkedinField.isUserInteractionEnabled = true
+
         }
         else {
            editButton.setTitle("Edit", for: UIControlState.normal)
-            myInfo.name = nameField.text!
-            myInfo.phoneNum = phoneField.text!
-            myInfo.fbName = fbField.text!
             nameField.isUserInteractionEnabled = false
             phoneField.isUserInteractionEnabled = false
+            emailField.isUserInteractionEnabled = false
             fbField.isUserInteractionEnabled = false
+            instagramField.isUserInteractionEnabled = false
+            linkedinField.isUserInteractionEnabled = false
+            
+            let nameToSave = self.nameField.text
+            let phoneToSave = self.phoneField.text
+            let emailToSave = self.nameField.text
+            let fbToSave = self.fbField.text
+            let instagramToSave = self.instagramField.text
+            let linkedinToSave = self.linkedinField.text
+        
+            self.saveMyself(name: nameToSave!, phoneNum: phoneToSave!, email: emailToSave!, fbName: fbToSave!, instagram: instagramToSave!, linkedin: linkedinToSave!)
+            self.dismiss(animated: true, completion: nil)
         }
     }
     

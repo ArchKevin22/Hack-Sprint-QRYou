@@ -7,12 +7,20 @@
 //
 
 import UIKit
+import CoreData
 
 class ContactInfoViewController: UIViewController {
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var phoneLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var fbLabel: UILabel!
+    @IBOutlet weak var instagramField: UILabel!
+    @IBOutlet weak var linkedinField: UILabel!
+    
+    @IBAction func goBack(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
     
     var a: ContactInfoStruct!
     
@@ -20,8 +28,10 @@ class ContactInfoViewController: UIViewController {
         super.viewDidLoad()
         nameLabel.text = a.name
         phoneLabel.text = a.phoneNum
+        emailLabel.text = a.email
         fbLabel.text = a.fbName
-        
+        instagramField.text = a.instagram
+        linkedinField.text = a.linkedin
         // Do any additional setup after loading the view.
     }
     

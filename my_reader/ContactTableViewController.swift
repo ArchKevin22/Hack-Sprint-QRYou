@@ -7,27 +7,19 @@
 //
 
 import UIKit
-var contactsList = [ContactInfoStruct]()
+import CoreData
+
+var contactsList = [NSManagedObject]()
 
 class ContactTableViewController: UITableViewController {
     
-    var a = ContactInfoStruct()
-    
-    var obj = ContactInfoStruct()
-    var obj2 = ContactInfoStruct()
+    var a = NSManagedObject()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        obj.name = "John Doe"
-        obj.phoneNum = "5555555555"
-        obj.fbName = "john.doe"
         
-        obj2.name = "Apple"
-        obj2.phoneNum = "123456798"
-        obj2.fbName = "fffff"
+        title = "Contacts"
         
-        contactsList.append(obj)
-        contactsList.append(obj2)
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -39,13 +31,44 @@ class ContactTableViewController: UITableViewController {
         tableView.delegate = self
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        //1
+        guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else {
+                return
+        }
+        
+        let managedContext =
+            appDelegate.persistentContainer.viewContext
+        
+        //2
+        let fetchRequest =
+            NSFetchRequest<NSManagedObject>(entityName: "Contact")
+        
+        //3
+        do {
+            contactsList = try managedContext.fetch(fetchRequest)
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //         Create a variable that you want to send
         let object = contactsList[tableView.indexPathForSelectedRow!.row]
+        var obj = ContactInfoStruct()
+        obj.name = (object.value(forKeyPath: "name") as? String)!
+        obj.phoneNum = (object.value(forKeyPath: "phoneNum") as? String)!
+        obj.email = (object.value(forKeyPath: "email") as? String)!
+        obj.fbName = (object.value(forKeyPath: "fbName") as? String)!
+        obj.instagram = (object.value(forKeyPath: "instagram") as? String)!
+        obj.linkedin = (object.value(forKeyPath: "linkedin") as? String)!
         
         //         Create a new variable to store the instance of PlayerTableViewController
         let destinationVC = segue.destination as! ContactInfoViewController
-        destinationVC.a = object
+        destinationVC.a = obj
     }
     
     
@@ -79,9 +102,9 @@ class ContactTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        
+        let contact = contactsList[indexPath.row]
         // Configure the cell...
-        cell.textLabel?.text = contactsList[indexPath.row].name
+        cell.textLabel?.text = contact.value(forKeyPath: "name") as? String
         
         return cell
     }

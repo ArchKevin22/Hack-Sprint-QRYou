@@ -11,6 +11,7 @@ import UIKit
 import AVFoundation
 import QRCodeReader
 import QRCode
+import CoreData
 
 class ViewController: UIViewController, QRCodeReaderViewControllerDelegate {
     lazy var reader = QRCodeReaderViewController(builder: QRCodeReaderViewControllerBuilder {
@@ -20,18 +21,75 @@ class ViewController: UIViewController, QRCodeReaderViewControllerDelegate {
     
     
     @IBOutlet weak var imageView: UIImageView!
+    
+    func parse(c: NSManagedObject) -> String {
+        var obj : ContactInfoStruct!
+        obj.name = (c.value(forKeyPath: "name") as? String)!
+        obj.phoneNum = (c.value(forKeyPath: "phoneNum") as? String)!
+        obj.email = (c.value(forKeyPath: "email") as? String)!
+        obj.fbName = (c.value(forKeyPath: "fbName") as? String)!
+        obj.instagram = (c.value(forKeyPath: "instagram") as? String)!
+        obj.linkedin = (c.value(forKeyPath: "linkedin") as? String)!
+        var s = obj.name
+        s += ","
+        s += obj.phoneNum
+        s += ","
+        s += obj.email
+        s += ","
+        s += obj.fbName
+        s += ","
+        s += obj.instagram
+        s += ","
+        s += obj.linkedin
+        
+        return s
+    }
+    
+    func loadImage() {
+        if myInfo.count > 0 {
+            let str = parse(c: myInfo[0])
+            let qrCode = QRCode(str)
+            let img = qrCode?.image
+            imageView.image = img
+        }
+        else {
+            let imgname = "nope.png"
+            imageView.image = UIImage(named: imgname)
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // String
-        let qrCode = QRCode("Daniel Park,408-242-8483,danielpark95@gmail.com,danielpark95,@asapdanyo,/in/danielpark95")
-        let img = qrCode?.image
-        imageView.image = img
+        loadImage()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        //1
+        guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else {
+                return
+        }
+        
+        let managedContext =
+            appDelegate.persistentContainer.viewContext
+        
+        //2
+        let fetchRequest =
+            NSFetchRequest<NSManagedObject>(entityName: "Me")
+        
+        //3
+        do {
+            myInfo = try managedContext.fetch(fetchRequest)
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+        print(myInfo.count)
+    }
+    
     @IBAction func editMyInfo(_ sender: Any) {
         performSegue(withIdentifier: "editmyinfo", sender: sender)
     }
-    
     // reader
     @IBAction func scanAction(_ sender: AnyObject) {
         do {
@@ -65,12 +123,49 @@ class ViewController: UIViewController, QRCodeReaderViewControllerDelegate {
             case -11814:
                 let alert = UIAlertController(title: "Error", message: "Reader not supported by the current device", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-                
                 present(alert, animated: true, completion: nil)
             default:()
             }
         }
 
+    }
+    
+    func save(str: String) {
+        
+        guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else {
+                return
+        }
+        
+        // 1
+        let managedContext =
+            appDelegate.persistentContainer.viewContext
+        
+        // 2
+        let entity =
+            NSEntityDescription.entity(forEntityName: "Contact",
+                                       in: managedContext)!
+        
+        let contact = NSManagedObject(entity: entity,
+                                      insertInto: managedContext)
+        
+        // 3
+        let new_str = str.components(separatedBy: ",")
+        
+        contact.setValue(new_str[0], forKeyPath: "name")
+        contact.setValue(new_str[1], forKeyPath: "email")
+        contact.setValue(new_str[2], forKeyPath: "phoneNum")
+        contact.setValue(new_str[3], forKeyPath: "fbName")
+        contact.setValue(new_str[4], forKeyPath: "instagram")
+        contact.setValue(new_str[5], forKeyPath: "linkedin")
+        
+        // 4
+        do {
+            try managedContext.save()
+            contactsList.append(contact)
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
     }
     
     // MARK: - QRCodeReader Delegate Methods
@@ -80,6 +175,7 @@ class ViewController: UIViewController, QRCodeReaderViewControllerDelegate {
         dismiss(animated: true) { [weak self] in
             let my_string = result.value
             let value_arr = my_string.components(separatedBy: ",")
+            self?.save(str: my_string)
             let alert = UIAlertController(
                 title: "Success!",
                 message: String (format:"Name: %@\nPhone Number: %@\nE-Mail: %@\nFacebook: %@\nInstagram: %@\nLinkedIn: %@", value_arr[0],value_arr[1],value_arr[2],value_arr[3],value_arr[4],value_arr[5]),
@@ -98,7 +194,6 @@ class ViewController: UIViewController, QRCodeReaderViewControllerDelegate {
     
     func readerDidCancel(_ reader: QRCodeReaderViewController) {
         reader.stopScanning()
-        
         dismiss(animated: true, completion: nil)
     }
 }
