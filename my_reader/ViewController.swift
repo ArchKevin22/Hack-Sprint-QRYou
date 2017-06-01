@@ -12,7 +12,29 @@ import AVFoundation
 import QRCodeReader
 import QRCode
 
+var qrCode = QRCode("Kevin")
+var img = qrCode?.image
+
+func parse(obj: ContactInfoStruct) -> String {
+           var s = obj.name
+            s += ","
+            s += obj.phoneNum
+            s += ","
+            s += obj.email
+            s += ","
+            s += obj.fbName
+            s += ","
+            s += obj.instagram
+            s += ","
+            s += obj.linkedin
+            
+            return s
+        }
+
 class ViewController: UIViewController, QRCodeReaderViewControllerDelegate {
+    @IBAction func reloadImage(_ sender: AnyObject) {
+        imageView.image = img
+    }
     lazy var reader = QRCodeReaderViewController(builder: QRCodeReaderViewControllerBuilder {
         $0.reader          = QRCodeReader(metadataObjectTypes: [AVMetadataObjectTypeQRCode])
         $0.showTorchButton = true
@@ -24,7 +46,7 @@ class ViewController: UIViewController, QRCodeReaderViewControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // String
-        let qrCode = QRCode("Daniel Park,408-242-8483,danielpark95@gmail.com,danielpark95,@asapdanyo,/in/danielpark95")
+        qrCode = QRCode(parse(obj: myInfo))
         let img = qrCode?.image
         imageView.image = img
     }
@@ -86,6 +108,14 @@ class ViewController: UIViewController, QRCodeReaderViewControllerDelegate {
                 preferredStyle: .alert
             )
             alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+            let a = ContactInfoStruct()
+            a.name = value_arr[0]
+            a.phoneNum = value_arr[1]
+            a.email = value_arr[2]
+            a.fbName = value_arr[3]
+            a.instagram = value_arr[4]
+            a.linkedin = value_arr[5]
+            contactsList.append(a)
             self?.present(alert, animated: true, completion: nil)
         }
     }
@@ -98,7 +128,6 @@ class ViewController: UIViewController, QRCodeReaderViewControllerDelegate {
     
     func readerDidCancel(_ reader: QRCodeReaderViewController) {
         reader.stopScanning()
-        
         dismiss(animated: true, completion: nil)
     }
 }

@@ -11,8 +11,8 @@ import UIKit
 class ContactInfoStruct: NSObject {
     var name = ""
     var phoneNum = ""
-//    var email = ""
+    var email = ""
     var fbName = ""
-//    var insta = ""
-//    var linked = ""
+    var instagram = ""
+    var linkedin = ""
 }

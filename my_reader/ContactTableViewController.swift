@@ -42,7 +42,7 @@ class ContactTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //         Create a variable that you want to send
         let object = contactsList[tableView.indexPathForSelectedRow!.row]
-        
+        self.tableView.reloadData()
         //         Create a new variable to store the instance of PlayerTableViewController
         let destinationVC = segue.destination as! ContactInfoViewController
         destinationVC.a = object

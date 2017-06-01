@@ -13,14 +13,21 @@ class ContactInfoViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var phoneLabel: UILabel!
     @IBOutlet weak var fbLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var instaLabel: UILabel!
+    @IBOutlet weak var linkedLabel: UILabel!
+
     
     var a: ContactInfoStruct!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        nameLabel.text = a.name
-        phoneLabel.text = a.phoneNum
-        fbLabel.text = a.fbName
+        nameLabel.text = "name: " +  a.name
+        phoneLabel.text = "phone: " + a.phoneNum
+        fbLabel.text = "facebook: " + a.fbName
+        emailLabel.text = "email: " + a.email
+        instaLabel.text = "instagram: " + a.instagram
+        linkedLabel.text = "linkedin: " + a.linkedin
         
         // Do any additional setup after loading the view.
     }

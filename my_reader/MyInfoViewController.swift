@@ -7,6 +7,11 @@
 //
 
 import UIKit
+import QRCode
+import QRCodeReader
+import AVFoundation
+import Foundation
+
 var myInfo = ContactInfoStruct()
 
 class MyInfoViewController: UIViewController, UITextFieldDelegate {
@@ -14,7 +19,10 @@ class MyInfoViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var phoneField: UITextField!
+    @IBOutlet weak var emailField: UITextField!
+    @IBOutlet weak var instaField: UITextField!
     @IBOutlet weak var fbField: UITextField!
+    @IBOutlet weak var linkedField: UITextField!
     
     var editMode = false
     
@@ -27,6 +35,9 @@ class MyInfoViewController: UIViewController, UITextFieldDelegate {
         nameField.isUserInteractionEnabled = false
         phoneField.isUserInteractionEnabled = false
         fbField.isUserInteractionEnabled = false
+        emailField.isUserInteractionEnabled = false
+        instaField.isUserInteractionEnabled = false
+        linkedField.isUserInteractionEnabled = false
         // Do any additional setup after loading the view.
     }
 
@@ -47,15 +58,27 @@ class MyInfoViewController: UIViewController, UITextFieldDelegate {
             nameField.isUserInteractionEnabled = true
             phoneField.isUserInteractionEnabled = true
             fbField.isUserInteractionEnabled = true
+            emailField.isUserInteractionEnabled = true
+            instaField.isUserInteractionEnabled = true
+            linkedField.isUserInteractionEnabled = true
         }
         else {
            editButton.setTitle("Edit", for: UIControlState.normal)
             myInfo.name = nameField.text!
             myInfo.phoneNum = phoneField.text!
             myInfo.fbName = fbField.text!
+            myInfo.email = emailField.text!
+            myInfo.instagram = instaField.text!
+            myInfo.linkedin = linkedField.text!
             nameField.isUserInteractionEnabled = false
             phoneField.isUserInteractionEnabled = false
             fbField.isUserInteractionEnabled = false
+            emailField.isUserInteractionEnabled = false
+            instaField.isUserInteractionEnabled = false
+            linkedField.isUserInteractionEnabled = false
+            qrCode = QRCode(parse(obj: myInfo))
+            img = qrCode?.image
+            self.dismiss(animated: true, completion: nil)
         }
     }
     
