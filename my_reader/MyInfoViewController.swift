@@ -12,10 +12,9 @@ import QRCodeReader
 import AVFoundation
 import Foundation
 
-var myInfo = ContactInfoStruct()
 
 class MyInfoViewController: UIViewController, UITextFieldDelegate {
-    
+
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var phoneField: UITextField!
@@ -23,15 +22,15 @@ class MyInfoViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var instaField: UITextField!
     @IBOutlet weak var fbField: UITextField!
     @IBOutlet weak var linkedField: UITextField!
-    
+
     var editMode = false
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         nameField.delegate = self
         phoneField.delegate = self
         fbField.delegate = self
-        
+
         nameField.isUserInteractionEnabled = false
         phoneField.isUserInteractionEnabled = false
         fbField.isUserInteractionEnabled = false
@@ -45,13 +44,13 @@ class MyInfoViewController: UIViewController, UITextFieldDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
 
     @IBAction func onClick(_ sender: UIButton) {
         editMode = !editMode
         checkEditMode()
     }
-    
+
     public func checkEditMode() {
         if editMode == true {
             editButton.setTitle("Save", for: UIControlState.normal)
@@ -63,35 +62,47 @@ class MyInfoViewController: UIViewController, UITextFieldDelegate {
             linkedField.isUserInteractionEnabled = true
         }
         else {
-           editButton.setTitle("Edit", for: UIControlState.normal)
-            myInfo.name = nameField.text!
-            myInfo.phoneNum = phoneField.text!
-            myInfo.fbName = fbField.text!
-            myInfo.email = emailField.text!
-            myInfo.instagram = instaField.text!
-            myInfo.linkedin = linkedField.text!
-            nameField.isUserInteractionEnabled = false
-            phoneField.isUserInteractionEnabled = false
-            fbField.isUserInteractionEnabled = false
-            emailField.isUserInteractionEnabled = false
-            instaField.isUserInteractionEnabled = false
-            linkedField.isUserInteractionEnabled = false
-            qrCode = QRCode(parse(obj: myInfo))
-            img = qrCode?.image
-            self.dismiss(animated: true, completion: nil)
+          if nameField.text.range(",").startIndex != nil or phoneField.text.range(",").startIndex != nil or fbField.text.range(",").startIndex != nil
+              emailField.text.range(",").startIndex != nil or instaField.text.range(",").startIndex != nil or linkedField.text.range(",").startIndex != nil {
+              let alert = UIAlertController (
+                  title: "Success!",
+                  message: "No commas allowed! Commas are an illegal character. Please remove it.",
+                  preferredStyle: .alert
+              )
+              alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+
+          }
+            else {
+              editButton.setTitle("Edit", for: UIControlState.normal)
+              myInfo.name = nameField.text!
+              myInfo.phoneNum = phoneField.text!
+              myInfo.fbName = fbField.text!
+              myInfo.email = emailField.text!
+              myInfo.instagram = instaField.text!
+              myInfo.linkedin = linkedField.text!
+              nameField.isUserInteractionEnabled = false
+              phoneField.isUserInteractionEnabled = false
+              fbField.isUserInteractionEnabled = false
+              emailField.isUserInteractionEnabled = false
+              instaField.isUserInteractionEnabled = false
+              linkedField.isUserInteractionEnabled = false
+              qrCode = QRCode(parse(obj: myInfo))
+              img = qrCode?.image
+              self.dismiss(animated: true, completion: nil)
+          }
         }
     }
-    
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         // Hide the keyboard.
         textField.resignFirstResponder()
         return true
     }
-    
+
     func textFieldDidEndEditing(_ textField: UITextField) {
-        
+
     }
-    
+
     /*
     // MARK: - Navigation
 
