@@ -8,22 +8,21 @@
 
 import UIKit
 
-var contactsList: [String] {
-    get {
-        if let returnValue = defaults.object(forKey: "contactsList") as? [String] {
-            return returnValue == [] ? ["John Doe,5555555555,john.doe@yandex.ru,john.doe,@ayylmao,/in/john.doe", "Apple,1234567890,eggert@cs.ucla.edu,https://github.com/eggert,@vim123,http://www.bruinwalk.com/professors/paul-r-eggert/"] : returnValue
-        } else {
-            return ["John Doe,5555555555,john.doe@yandex.ru,john.doe,@ayylmao,/in/john.doe", "Apple,1234567890,eggert@cs.ucla.edu,https://github.com/eggert,@vim123,http://www.bruinwalk.com/professors/paul-r-eggert/"] //Default value
+class ContactTableViewController: UITableViewController {
+    
+    static var contactsList: [String] {
+        get {
+            if let returnValue = UserDefaults.standard.object(forKey: "contactsList") as? [String] {
+                return returnValue == [] ? ["John Doe,5555555555,john.doe@yandex.ru,https://facebook.com/john.doe,https://instagram.com/ayylmao,https://linkedin.com/in/john.doe", "Apple,1234567890,eggert@cs.ucla.edu,https://github.com/eggert,https://instagram.com/vim123,http://www.bruinwalk.com/professors/paul-r-eggert/"] : returnValue
+            } else {
+                return ["John Doe,5555555555,john.doe@yandex.ru,https://facebook.com/john.doe,https://instagram.com/ayylmao,https://linkedin.com/in/john.doe", "Apple,1234567890,eggert@cs.ucla.edu,https://github.com/eggert,https://instagram.com/vim123,http://www.bruinwalk.com/professors/paul-r-eggert/"] //Default value
+            }
+        }
+        set (newValue) {
+            UserDefaults.standard.set(newValue, forKey: "contactsList")
+            //NSUserDefaults.standardUserDefaults().synchronize()
         }
     }
-    set (newValue) {
-        UserDefaults.standard.set(newValue, forKey: "contactsList")
-        //NSUserDefaults.standardUserDefaults().synchronize()
-    }
-}
-
-
-class ContactTableViewController: UITableViewController {
 
     var a = ContactInfoStruct()
     
@@ -36,8 +35,6 @@ class ContactTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
 
-        defaults.set(nil, forKey: "ContactsList")
-
         tableView.dataSource = self
         tableView.delegate = self
     }
@@ -48,7 +45,7 @@ class ContactTableViewController: UITableViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //         Create a variable that you want to send
-        let object = contactsList[tableView.indexPathForSelectedRow!.row]
+        let object = ContactTableViewController.contactsList[tableView.indexPathForSelectedRow!.row]
         //         Create a new variable to store the instance of PlayerTableViewController
         let destinationVC = segue.destination as! ContactInfoViewController
         destinationVC.a = object
@@ -79,7 +76,7 @@ class ContactTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return contactsList.count
+        return ContactTableViewController.contactsList.count
     }
 
 
@@ -88,7 +85,7 @@ class ContactTableViewController: UITableViewController {
 
         // Configure the cell...
 
-        cell.textLabel?.text = parse(str: contactsList[indexPath.row]).name
+        cell.textLabel?.text = parse(str: ContactTableViewController.contactsList[indexPath.row]).name
         return cell
     }
 
@@ -121,7 +118,7 @@ class ContactTableViewController: UITableViewController {
      override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
      if editingStyle == .delete {
      // Delete the row from the data source
-        contactsList.remove(at: indexPath.row)
+        ContactTableViewController.contactsList.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .fade)
         self.tableView.reloadData()
      } else if editingStyle == .insert {

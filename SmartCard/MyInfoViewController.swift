@@ -28,7 +28,7 @@ class MyInfoViewController: UIViewController, UITextFieldDelegate {
     var editMode = false
 
     @IBAction func switchCode(_ sender: Any) {
-        let b = parse(str: myInfo[segControl.selectedSegmentIndex])
+        let b = parse(str: MainViewController.myInfo[segControl.selectedSegmentIndex])
         nameField.text = b.name
         phoneField.text = b.phoneNum
         emailField.text = b.email
@@ -52,7 +52,7 @@ class MyInfoViewController: UIViewController, UITextFieldDelegate {
         instaField.isUserInteractionEnabled = false
         linkedField.isUserInteractionEnabled = false
         
-        let b = parse(str: myInfo[0])
+        let b = parse(str: MainViewController.myInfo[segControl.selectedSegmentIndex])
         nameField.text = b.name
         phoneField.text = b.phoneNum
         emailField.text = b.email
@@ -111,7 +111,7 @@ class MyInfoViewController: UIViewController, UITextFieldDelegate {
             instaField.isUserInteractionEnabled = false
             linkedField.isUserInteractionEnabled = false
             let str = parse(obj: temp)
-            myInfo[segControl.selectedSegmentIndex] = str
+            MainViewController.myInfo[segControl.selectedSegmentIndex] = str
             }
         }
     }

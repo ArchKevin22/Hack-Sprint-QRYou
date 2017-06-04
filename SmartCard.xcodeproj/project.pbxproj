@@ -13,12 +13,12 @@
 		14B654571E4FBEF700ADB67C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14B654551E4FBEF700ADB67C /* LaunchScreen.storyboard */; };
 		14B654621E4FBEF700ADB67C /* SmartCardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B654611E4FBEF700ADB67C /* SmartCardTests.swift */; };
 		14B6546D1E4FBEF700ADB67C /* SmartCardUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B6546C1E4FBEF700ADB67C /* SmartCardUITests.swift */; };
+		3DF1BF091EE48E8500A417D9 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF1BF081EE48E8500A417D9 /* Parser.swift */; };
 		65C703271E4FF645005176FB /* ContactInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C703211E4FF645005176FB /* ContactInfoViewController.swift */; };
 		65C703291E4FF645005176FB /* ContactTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C703231E4FF645005176FB /* ContactTableViewController.swift */; };
 		65C7032A1E4FF645005176FB /* MyInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C703241E4FF645005176FB /* MyInfoViewController.swift */; };
 		65C7032B1E4FF645005176FB /* ContactInfoStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C703251E4FF645005176FB /* ContactInfoStruct.swift */; };
 		65C703301E50199D005176FB /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C7032F1E50199D005176FB /* MainViewController.swift */; };
-		9AB94F33AE8CFD92B1CAC089 /* Pods_SmartCard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EE0E3BE6AEA9E53D7209AD5 /* Pods_SmartCard.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,8 +51,8 @@
 		14B654681E4FBEF700ADB67C /* SmartCardUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SmartCardUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		14B6546C1E4FBEF700ADB67C /* SmartCardUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartCardUITests.swift; sourceTree = "<group>"; };
 		14B6546E1E4FBEF700ADB67C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3DF1BF081EE48E8500A417D9 /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		4D026C955CE830217DCDB2E3 /* Pods-SmartCard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartCard.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SmartCard/Pods-SmartCard.debug.xcconfig"; sourceTree = "<group>"; };
-		5EE0E3BE6AEA9E53D7209AD5 /* Pods_SmartCard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartCard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		65C703211E4FF645005176FB /* ContactInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactInfoViewController.swift; sourceTree = "<group>"; };
 		65C703231E4FF645005176FB /* ContactTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactTableViewController.swift; sourceTree = "<group>"; };
 		65C703241E4FF645005176FB /* MyInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyInfoViewController.swift; sourceTree = "<group>"; };
@@ -66,7 +66,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9AB94F33AE8CFD92B1CAC089 /* Pods_SmartCard.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,6 +121,7 @@
 				14B654531E4FBEF700ADB67C /* Assets.xcassets */,
 				14B654551E4FBEF700ADB67C /* LaunchScreen.storyboard */,
 				14B654581E4FBEF700ADB67C /* Info.plist */,
+				3DF1BF081EE48E8500A417D9 /* Parser.swift */,
 			);
 			path = SmartCard;
 			sourceTree = "<group>";
@@ -147,7 +147,6 @@
 		18E3E0677CF620C5050074D4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				5EE0E3BE6AEA9E53D7209AD5 /* Pods_SmartCard.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -352,6 +351,7 @@
 				65C7032A1E4FF645005176FB /* MyInfoViewController.swift in Sources */,
 				14B6544D1E4FBEF700ADB67C /* AppDelegate.swift in Sources */,
 				65C7032B1E4FF645005176FB /* ContactInfoStruct.swift in Sources */,
+				3DF1BF091EE48E8500A417D9 /* Parser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

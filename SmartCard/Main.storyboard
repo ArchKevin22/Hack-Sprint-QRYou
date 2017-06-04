@@ -24,13 +24,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="T7J-jK-hQS">
-                                <rect key="frame" x="41" y="80" width="518" height="521"/>
+                                <rect key="frame" x="37" y="80" width="301" height="521"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="VO2-Ug-h82">
-                                        <rect key="frame" x="0.0" y="0.0" width="518" height="521"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="301" height="521"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="uco-NA-eNR">
-                                                <rect key="frame" x="108.5" y="0.0" width="301" height="371"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="301" height="371"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="elP-jO-zZQ">
                                                         <rect key="frame" x="0.0" y="0.0" width="301" height="301"/>
@@ -64,7 +64,7 @@
                                                 </subviews>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P5n-CT-PTt">
-                                                <rect key="frame" x="181.5" y="371" width="155" height="150"/>
+                                                <rect key="frame" x="73" y="371" width="155" height="150"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="155" id="O9u-YB-D6M"/>
                                                     <constraint firstAttribute="height" constant="150" id="h6v-qf-cpj"/>
@@ -110,7 +110,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="700" y="268"/>
+            <point key="canvasLocation" x="-82" y="1021"/>
         </scene>
         <!--QR Code-->
         <scene sceneID="2f4-LG-gpa">
@@ -148,7 +148,7 @@
             </objects>
             <point key="canvasLocation" x="-895" y="268"/>
         </scene>
-        <!--My Info View Controller-->
+        <!--My Info-->
         <scene sceneID="kCX-f0-E69">
             <objects>
                 <viewController id="YDF-fZ-XoX" customClass="MyInfoViewController" customModule="SmartCard" customModuleProvider="target" sceneMemberID="viewController">
@@ -160,15 +160,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9kz-fS-ekp">
-                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem title="Title" id="Tek-Ro-cPB"/>
-                                </items>
-                            </navigationBar>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="eac-Qf-Npa">
-                                <rect key="frame" x="20" y="124" width="115" height="401"/>
+                                <rect key="frame" x="16" y="124" width="257.5" height="401"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tak-W8-vf2">
                                         <rect key="frame" x="0.0" y="0.0" width="45" height="20.5"/>
@@ -212,8 +205,8 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="fbuser" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dd4-UW-9DC">
-                                        <rect key="frame" x="0.0" y="245" width="46" height="17"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="https://facebook.com/fb_name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dd4-UW-9DC">
+                                        <rect key="frame" x="0.0" y="245" width="202.5" height="17"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -224,8 +217,8 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="@ig_user" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xjl-mg-P6F">
-                                        <rect key="frame" x="0.0" y="314.5" width="63" height="17"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="https://instagram.com/instagram_name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xjl-mg-P6F">
+                                        <rect key="frame" x="0.0" y="314.5" width="257.5" height="17"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -236,16 +229,16 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="/in/professional" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PiI-sV-WCI">
-                                        <rect key="frame" x="0.0" y="384" width="103.5" height="17"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="https://linkedin.com/in/linkedin_name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PiI-sV-WCI">
+                                        <rect key="frame" x="0.0" y="384" width="244" height="17"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                 </subviews>
                             </stackView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="WnR-Ec-BAb">
-                                <rect key="frame" x="55" y="72" width="490" height="29"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="WnR-Ec-BAb">
+                                <rect key="frame" x="51" y="72" width="273" height="29"/>
                                 <segments>
                                     <segment title="A"/>
                                     <segment title="B"/>
@@ -257,7 +250,7 @@
                                 </connections>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oh0-As-1XS">
-                                <rect key="frame" x="176" y="485" width="248" height="30"/>
+                                <rect key="frame" x="172" y="552" width="31" height="30"/>
                                 <state key="normal" title="Edit"/>
                                 <connections>
                                     <action selector="onClick:" destination="YDF-fZ-XoX" eventType="touchUpInside" id="gik-eL-4WL"/>
@@ -276,6 +269,7 @@
                             <constraint firstItem="ogr-ip-qp3" firstAttribute="top" secondItem="oh0-As-1XS" secondAttribute="bottom" constant="36" id="kNQ-kp-KOS"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="My Info" id="tA3-Kf-LaK"/>
                     <connections>
                         <outlet property="editButton" destination="oh0-As-1XS" id="g2V-Ca-hSA"/>
                         <outlet property="emailField" destination="xGP-80-xw7" id="ljQ-vj-EQt"/>
@@ -289,7 +283,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vs9-wK-hCI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="573.60000000000002" y="1161.7691154422789"/>
+            <point key="canvasLocation" x="713" y="1021"/>
         </scene>
         <!--Contacts-->
         <scene sceneID="oSD-16-GCE">
@@ -340,7 +334,7 @@
             </objects>
             <point key="canvasLocation" x="-1738" y="1024"/>
         </scene>
-        <!--Contact Info View Controller-->
+        <!--Viewing-->
         <scene sceneID="Dcz-IC-w7Z">
             <objects>
                 <viewController id="mlK-bY-CKy" customClass="ContactInfoViewController" customModule="SmartCard" customModuleProvider="target" sceneMemberID="viewController">
@@ -365,7 +359,7 @@
                         <gestureRecognizers/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="1Tp-3e-nsj"/>
+                    <navigationItem key="navigationItem" title="Viewing" id="1Tp-3e-nsj"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="textView" destination="68o-Z0-sQJ" id="thM-Q3-2OG"/>
