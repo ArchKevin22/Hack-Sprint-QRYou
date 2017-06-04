@@ -88,7 +88,7 @@ class MyInfoViewController: UIViewController, UITextFieldDelegate {
           if (nameField.text?.characters.count != 0 && phoneField.text?.characters.count != 0 && fbField.text?.characters.count != 0 && emailField.text?.characters.count != 0 && instaField.text?.characters.count != 0 && linkedField.text?.characters.count != 0) &&
             (nameField.text?.range(of: ",")!.lowerBound != nil || phoneField.text?.range(of: ",")!.lowerBound != nil || fbField.text?.range(of: ",")!.lowerBound != nil || emailField.text?.range(of: ",")!.lowerBound != nil || instaField.text?.range(of: ",")!.lowerBound != nil || linkedField.text?.range(of: ",")?.lowerBound != nil) {
               let alert = UIAlertController (
-                  title: "Success!",
+                  title: "Error",
                   message: "No commas allowed! Commas are an illegal character. Please remove it.",
                   preferredStyle: .alert
               )

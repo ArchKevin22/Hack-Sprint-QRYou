@@ -70,12 +70,8 @@ class MainViewController: UIViewController, QRCodeReaderViewControllerDelegate {
     })
 
     @IBAction func getCode(_ sender: Any) {
-        if myInfo.count > segmentedControl.selectedSegmentIndex {
-            qrCode = QRCode(myInfo[segmentedControl.selectedSegmentIndex])
-        }
-        else {
-            qrCode = QRCode("Kevin,1234567890,kevin@gmail.com,kevin,,")
-        }
+        qrCode = QRCode(myInfo[segmentedControl.selectedSegmentIndex])
+
         reloadImage()
     }
 
