@@ -86,14 +86,14 @@ class MyInfoViewController: UIViewController, UITextFieldDelegate {
         }
         else {
           if (nameField.text?.characters.count != 0 && phoneField.text?.characters.count != 0 && fbField.text?.characters.count != 0 && emailField.text?.characters.count != 0 && instaField.text?.characters.count != 0 && linkedField.text?.characters.count != 0) &&
-            (nameField.text?.range(of: ",")!.lowerBound != nil || phoneField.text?.range(of: ",")!.lowerBound != nil || fbField.text?.range(of: ",")!.lowerBound != nil || emailField.text?.range(of: ",")!.lowerBound != nil || instaField.text?.range(of: ",")!.lowerBound != nil || linkedField.text?.range(of: ",")?.lowerBound != nil) {
+            (nameField.text?.characters.index(of: ",") != nil || phoneField.text?.characters.index(of: ",") != nil || fbField.text?.characters.index(of: ",") != nil || emailField.text?.characters.index(of: ",") != nil || instaField.text?.characters.index(of: ",") != nil || linkedField.text?.characters.index(of: ",") != nil) {
               let alert = UIAlertController (
                   title: "Error",
                   message: "No commas allowed! Commas are an illegal character. Please remove it.",
                   preferredStyle: .alert
               )
-              alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-
+                alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                self.present(alert, animated: true, completion: nil)
           }
           else {
             editButton.setTitle("Edit", for: UIControlState.normal)

@@ -13,9 +13,9 @@ class ContactTableViewController: UITableViewController {
     static var contactsList: [String] {
         get {
             if let returnValue = UserDefaults.standard.object(forKey: "contactsList") as? [String] {
-                return returnValue == [] ? ["John Doe,5555555555,john.doe@yandex.ru,https://facebook.com/john.doe,https://instagram.com/ayylmao,https://linkedin.com/in/john.doe", "Apple,1234567890,eggert@cs.ucla.edu,https://github.com/eggert,https://instagram.com/vim123,http://www.bruinwalk.com/professors/paul-r-eggert/"] : returnValue
+                return returnValue == [] ? ["John Doe,5555555555,john.doe@yandex.ru,https://facebook.com/john.doe,https://instagram.com/johndoe,https://linkedin.com/in/john.doe", "Apple,1234567890,eggert@cs.ucla.edu,https://github.com/eggert,https://instagram.com/vim123,http://www.bruinwalk.com/professors/paul-r-eggert/"] : returnValue
             } else {
-                return ["John Doe,5555555555,john.doe@yandex.ru,https://facebook.com/john.doe,https://instagram.com/ayylmao,https://linkedin.com/in/john.doe", "Apple,1234567890,eggert@cs.ucla.edu,https://github.com/eggert,https://instagram.com/vim123,http://www.bruinwalk.com/professors/paul-r-eggert/"] //Default value
+                return ["John Doe,5555555555,john.doe@yandex.ru,https://facebook.com/john.doe,https://instagram.com/johndoe,https://linkedin.com/in/john.doe", "Apple,1234567890,eggert@cs.ucla.edu,https://github.com/eggert,https://instagram.com/vim123,http://www.bruinwalk.com/professors/paul-r-eggert/"] //Default value
             }
         }
         set (newValue) {

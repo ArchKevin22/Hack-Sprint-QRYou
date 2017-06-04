@@ -18,7 +18,7 @@ class ContactInfoViewController: UIViewController {
         let b = parse(str: a)
         
         let name = b.name
-        let contactInfo = "Phone: " + parsePhoneNumber(usPhone: b.phoneNum) + "\n\n" + "Facebook: " + b.fbName + "\n\n" + "Email: " + b.email + "\n\n" + "Instagram: " + b.instagram + "\n\n" + "Linkedin: " + b.linkedin + "\n\n"
+        let contactInfo = "Phone: " + parsePhoneNumber(usPhone: b.phoneNum) + "\n\n" + "Email: " + b.email + "\n\n" + "Facebook: " + b.fbName + "\n\n" + "Instagram: " + b.instagram + "\n\n" + "Linkedin: " + b.linkedin + "\n\n"
         let textString = "\n\(name)\n\n\(contactInfo)"
         
         let attrText = NSMutableAttributedString(string: textString)

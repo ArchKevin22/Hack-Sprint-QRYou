@@ -115,7 +115,7 @@ class MainViewController: UIViewController, QRCodeReaderViewControllerDelegate {
             let value_arr = my_string.components(separatedBy: ",")
             let alert = UIAlertController(
                 title: "Success!",
-                message: String (format:"Name: %@\nPhone Number: %@\nE-Mail: %@\nFacebook: %@\nInstagram: %@\nLinkedIn: %@", value_arr[0],value_arr[1],value_arr[2],value_arr[3],value_arr[4],value_arr[5]),
+                message: String (format:"Name: %@\nPhone Number: %@\nE-Mail: %@\nFacebook: %@\nInstagram: %@\nLinkedIn: %@", value_arr[0],parsePhoneNumber(usPhone: value_arr[1]),value_arr[2],value_arr[3],value_arr[4],value_arr[5]),
                 preferredStyle: .alert
             )
             alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
