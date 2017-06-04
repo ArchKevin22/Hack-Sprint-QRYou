@@ -1,6 +1,6 @@
-# Familiarize
+# SmartCard
 
-"Familiarlize" was created to make it easier for people to share their contact info. Instead of the standard "asking for your number/name," a user can now scan another person's QR code to automatically get all their contact information. Think of it as a virtual business card.
+“SmartCard” was created to make it easier for people to share their contact info. Instead of the standard "asking for your number/name," a user can now scan another person's QR code to automatically get all their contact information. Think of it as a virtual business card.
 
 ## Installation
 Cocoapods are required for external libraries.
