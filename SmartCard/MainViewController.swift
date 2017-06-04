@@ -13,25 +13,11 @@ import QRCode
 
 class MainViewController: UIViewController, QRCodeReaderViewControllerDelegate {
     
-    static var myInfo: [String] {
-        get {
-            if let returnValue = UserDefaults.standard.object(forKey: "myInfo") as? [String] {
-                return returnValue == [] ? [",,,,,", ",,,,,", ",,,,,", ",,,,,"] : returnValue
-            } else {
-                return [",,,,,", ",,,,,", ",,,,,", ",,,,,"] //Default value
-            }
-        }
-        set (newValue) {
-            UserDefaults.standard.set(newValue, forKey: "myInfo")
-            //NSUserDefaults.standardUserDefaults().synchronize()
-        }
-    }
-    var qrCode = QRCode("")
-    var img : UIImage?
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     func reloadImage() {
-        img = (qrCode?.image)!
-        imageView.image = img
+        appDelegate.img = (appDelegate.qrCode?.image)!
+        imageView.image = appDelegate.img
     }
     lazy var reader = QRCodeReaderViewController(builder: QRCodeReaderViewControllerBuilder {
         $0.reader          = QRCodeReader(metadataObjectTypes: [AVMetadataObjectTypeQRCode])
@@ -39,7 +25,7 @@ class MainViewController: UIViewController, QRCodeReaderViewControllerDelegate {
     })
 
     @IBAction func getCode(_ sender: Any) {
-        qrCode = QRCode(MainViewController.myInfo[segmentedControl.selectedSegmentIndex])
+        appDelegate.qrCode = QRCode(appDelegate.myInfo[segmentedControl.selectedSegmentIndex])
 
         reloadImage()
     }
@@ -49,16 +35,16 @@ class MainViewController: UIViewController, QRCodeReaderViewControllerDelegate {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        qrCode = QRCode(MainViewController.myInfo[segmentedControl.selectedSegmentIndex])
+        appDelegate.qrCode = QRCode(appDelegate.myInfo[segmentedControl.selectedSegmentIndex])
         reloadImage()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // String
-        qrCode = QRCode(MainViewController.myInfo[0])
-        let img = qrCode?.image
-        imageView.image = img
+        appDelegate.qrCode = QRCode(appDelegate.myInfo[0])
+        appDelegate.img = appDelegate.qrCode?.image
+        imageView.image = appDelegate.img
     }
     
     @IBAction func editMyInfo(_ sender: Any) {
@@ -119,7 +105,7 @@ class MainViewController: UIViewController, QRCodeReaderViewControllerDelegate {
                 preferredStyle: .alert
             )
             alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-            ContactTableViewController.contactsList.append(my_string)
+            self?.appDelegate.contactsList.append(my_string)
 
             self?.present(alert, animated: true, completion: nil)
         }

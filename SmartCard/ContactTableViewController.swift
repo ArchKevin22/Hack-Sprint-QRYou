@@ -10,20 +10,7 @@ import UIKit
 
 class ContactTableViewController: UITableViewController {
     
-    static var contactsList: [String] {
-        get {
-            if let returnValue = UserDefaults.standard.object(forKey: "contactsList") as? [String] {
-                return returnValue == [] ? ["John Doe,5555555555,john.doe@yandex.ru,https://facebook.com/john.doe,https://instagram.com/johndoe,https://linkedin.com/in/john.doe", "Apple,1234567890,eggert@cs.ucla.edu,https://github.com/eggert,https://instagram.com/vim123,http://www.bruinwalk.com/professors/paul-r-eggert/"] : returnValue
-            } else {
-                return ["John Doe,5555555555,john.doe@yandex.ru,https://facebook.com/john.doe,https://instagram.com/johndoe,https://linkedin.com/in/john.doe", "Apple,1234567890,eggert@cs.ucla.edu,https://github.com/eggert,https://instagram.com/vim123,http://www.bruinwalk.com/professors/paul-r-eggert/"] //Default value
-            }
-        }
-        set (newValue) {
-            UserDefaults.standard.set(newValue, forKey: "contactsList")
-            //NSUserDefaults.standardUserDefaults().synchronize()
-        }
-    }
-
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var a = ContactInfoStruct()
     
     override func viewDidLoad() {
@@ -45,7 +32,7 @@ class ContactTableViewController: UITableViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //         Create a variable that you want to send
-        let object = ContactTableViewController.contactsList[tableView.indexPathForSelectedRow!.row]
+        let object = appDelegate.contactsList[tableView.indexPathForSelectedRow!.row]
         //         Create a new variable to store the instance of PlayerTableViewController
         let destinationVC = segue.destination as! ContactInfoViewController
         destinationVC.a = object
@@ -76,7 +63,7 @@ class ContactTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return ContactTableViewController.contactsList.count
+        return appDelegate.contactsList.count
     }
 
 
@@ -85,7 +72,7 @@ class ContactTableViewController: UITableViewController {
 
         // Configure the cell...
 
-        cell.textLabel?.text = parse(str: ContactTableViewController.contactsList[indexPath.row]).name
+        cell.textLabel?.text = parse(str: appDelegate.contactsList[indexPath.row]).name
         return cell
     }
 
@@ -118,9 +105,11 @@ class ContactTableViewController: UITableViewController {
      override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
      if editingStyle == .delete {
      // Delete the row from the data source
-        ContactTableViewController.contactsList.remove(at: indexPath.row)
+        self.tableView.beginUpdates()
+        appDelegate.contactsList.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .fade)
-        self.tableView.reloadData()
+        
+        self.tableView.endUpdates()
      } else if editingStyle == .insert {
      // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
      }

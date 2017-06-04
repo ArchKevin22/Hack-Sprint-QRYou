@@ -7,9 +7,41 @@
 //
 
 import UIKit
+import QRCode
+import QRCodeReader
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    var contactsList: [String] {
+        get {
+            if let returnValue = UserDefaults.standard.object(forKey: "contactsList") as? [String] {
+                return returnValue
+            } else {
+                return ["John Doe,5555555555,john.doe@yandex.ru,https://facebook.com/john.doe,https://instagram.com/johndoe,https://linkedin.com/in/john.doe", "Apple,1234567890,eggert@cs.ucla.edu,https://github.com/eggert,https://instagram.com/vim123,http://www.bruinwalk.com/professors/paul-r-eggert/"] //Default value
+            }
+        }
+        set (newValue) {
+            UserDefaults.standard.set(newValue, forKey: "contactsList")
+            //NSUserDefaults.standardUserDefaults().synchronize()
+        }
+    }
+    
+    var myInfo: [String] {
+        get {
+            if let returnValue = UserDefaults.standard.object(forKey: "myInfo") as? [String] {
+                return returnValue == [] ? [",,,,,", ",,,,,", ",,,,,", ",,,,,"] : returnValue
+            } else {
+                return [",,,,,", ",,,,,", ",,,,,", ",,,,,"] //Default value
+            }
+        }
+        set (newValue) {
+            UserDefaults.standard.set(newValue, forKey: "myInfo")
+            //NSUserDefaults.standardUserDefaults().synchronize()
+        }
+    }
+    var qrCode = QRCode("")
+    var img : UIImage?
 
     var window: UIWindow?
 
