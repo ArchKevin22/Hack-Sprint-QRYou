@@ -53,7 +53,7 @@ func parsePhoneNumber(usPhone: String) -> String {
         let areacode = substr.substring(with: NSRange(location: 0 + startIndex, length: 3))
         s = s + "(" + areacode + ") "
         if strSize > 6 {
-            let exchangecode = substr.substring(with: NSRange(location: 4 + startIndex, length: 3))
+            let exchangecode = substr.substring(with: NSRange(location: 3 + startIndex, length: 3))
             s = s + exchangecode + "-"
             let subscribernum = usPhone.substring(from: usPhone.index(usPhone.startIndex, offsetBy: 6 + startIndex))
             s = s + subscribernum
