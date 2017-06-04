@@ -41,11 +41,14 @@ class ContactTableViewController: UITableViewController {
         tableView.dataSource = self
         tableView.delegate = self
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.tableView.reloadData()
+    }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //         Create a variable that you want to send
         let object = contactsList[tableView.indexPathForSelectedRow!.row]
-        self.tableView.reloadData()
         //         Create a new variable to store the instance of PlayerTableViewController
         let destinationVC = segue.destination as! ContactInfoViewController
         destinationVC.a = object
@@ -113,17 +116,19 @@ class ContactTableViewController: UITableViewController {
      }
      */
 
-    /*
+    
      // Override to support editing the table view.
      override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
      if editingStyle == .delete {
      // Delete the row from the data source
-     tableView.deleteRows(at: [indexPath], with: .fade)
+        contactsList.remove(at: indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: .fade)
+        self.tableView.reloadData()
      } else if editingStyle == .insert {
      // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
      }
      }
-     */
+    
 
     /*
      // Override to support rearranging the table view.
