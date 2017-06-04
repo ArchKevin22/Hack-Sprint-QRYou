@@ -10,25 +10,31 @@ import UIKit
 
 class ContactInfoViewController: UIViewController {
 
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var phoneLabel: UILabel!
-    @IBOutlet weak var fbLabel: UILabel!
-    @IBOutlet weak var emailLabel: UILabel!
-    @IBOutlet weak var instaLabel: UILabel!
-    @IBOutlet weak var linkedLabel: UILabel!
-
-
     var a: String!
-
+    @IBOutlet weak var textView: UITextView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let b = parse(str: a)
-        nameLabel.text = "name: " +  b.name
-        phoneLabel.text = "phone: " + b.phoneNum
-        fbLabel.text = "facebook: " + b.fbName
-        emailLabel.text = "email: " + b.email
-        instaLabel.text = "instagram: " + b.instagram
-        linkedLabel.text = "linkedin: " + b.linkedin
+        
+        let name = b.name
+        let contactInfo = "Phone: " + b.phoneNum + "\n\n" + "Facebook: " + b.fbName + "\n\n" + "Email: " + b.email + "\n\n" + "Instagram: " + b.instagram + "\n\n" + "Linkedin: " + b.linkedin + "\n\n"
+        let textString = "\n\(name)\n\n\(contactInfo)"
+        
+        let attrText = NSMutableAttributedString(string: textString)
+        
+        let largeFont = UIFont(name: "Arial-BoldMT", size: 30.0)!
+        let smallFont = UIFont(name: "Arial", size: 16.0)!
+        
+        //  Convert textString to NSString because attrText.addAttribute takes an NSRange.
+        let largeTextRange = (textString as NSString).range(of: name)
+        let smallTextRange = (textString as NSString).range(of: contactInfo)
+        
+        attrText.addAttribute(NSFontAttributeName, value: largeFont, range: largeTextRange)
+        attrText.addAttribute(NSFontAttributeName, value: smallFont, range: smallTextRange)
+        
+        textView.attributedText = attrText
+        
 
         // Do any additional setup after loading the view.
     }

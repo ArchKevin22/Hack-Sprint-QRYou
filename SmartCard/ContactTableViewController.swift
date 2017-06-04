@@ -11,9 +11,9 @@ import UIKit
 var contactsList: [String] {
     get {
         if let returnValue = defaults.object(forKey: "contactsList") as? [String] {
-            return returnValue == [] ? ["John Doe,5555555555,john.doe@yandex.ru,john.doe,,", "Apple,1234567890,eggert@cs.ucla.edu,https://github.com/eggert,,"] : returnValue
+            return returnValue == [] ? ["John Doe,5555555555,john.doe@yandex.ru,john.doe,@ayylmao,/in/john.doe", "Apple,1234567890,eggert@cs.ucla.edu,https://github.com/eggert,@vim123,http://www.bruinwalk.com/professors/paul-r-eggert/"] : returnValue
         } else {
-            return ["John Doe,5555555555,john.doe@yandex.ru,john.doe,,", "Apple,1234567890,eggert@cs.ucla.edu,https://github.com/eggert,,"] //Default value
+            return ["John Doe,5555555555,john.doe@yandex.ru,john.doe,@ayylmao,/in/john.doe", "Apple,1234567890,eggert@cs.ucla.edu,https://github.com/eggert,@vim123,http://www.bruinwalk.com/professors/paul-r-eggert/"] //Default value
         }
     }
     set (newValue) {
