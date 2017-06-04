@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/kevinkou/Documents/Hack-Sprint-QRYou/SmartCard.xcodeproj">
+      location = "group:SmartCard.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">

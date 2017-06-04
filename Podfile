@@ -3,7 +3,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 use_frameworks!
 
-target ‘SmartCard’ do
+target 'SmartCard' do
     pod 'QRCodeReader.swift', '~> 7.3.0'
     pod 'QRCode'
 end

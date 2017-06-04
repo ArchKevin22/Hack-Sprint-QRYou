@@ -18,6 +18,7 @@
 		65C7032A1E4FF645005176FB /* MyInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C703241E4FF645005176FB /* MyInfoViewController.swift */; };
 		65C7032B1E4FF645005176FB /* ContactInfoStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C703251E4FF645005176FB /* ContactInfoStruct.swift */; };
 		65C703301E50199D005176FB /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C7032F1E50199D005176FB /* MainViewController.swift */; };
+		9AB94F33AE8CFD92B1CAC089 /* Pods_SmartCard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EE0E3BE6AEA9E53D7209AD5 /* Pods_SmartCard.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,14 +52,13 @@
 		14B6546C1E4FBEF700ADB67C /* SmartCardUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartCardUITests.swift; sourceTree = "<group>"; };
 		14B6546E1E4FBEF700ADB67C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4D026C955CE830217DCDB2E3 /* Pods-SmartCard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartCard.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SmartCard/Pods-SmartCard.debug.xcconfig"; sourceTree = "<group>"; };
+		5EE0E3BE6AEA9E53D7209AD5 /* Pods_SmartCard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartCard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		65C703211E4FF645005176FB /* ContactInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactInfoViewController.swift; sourceTree = "<group>"; };
 		65C703231E4FF645005176FB /* ContactTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactTableViewController.swift; sourceTree = "<group>"; };
 		65C703241E4FF645005176FB /* MyInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyInfoViewController.swift; sourceTree = "<group>"; };
 		65C703251E4FF645005176FB /* ContactInfoStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactInfoStruct.swift; sourceTree = "<group>"; };
 		65C7032F1E50199D005176FB /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		7F4C7D0982206AFD988CF371 /* Pods-my_reader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-my_reader.debug.xcconfig"; path = "Pods/Target Support Files/Pods-my_reader/Pods-my_reader.debug.xcconfig"; sourceTree = "<group>"; };
 		D90F925D10F5D18A45C3F32B /* Pods-SmartCard.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartCard.release.xcconfig"; path = "Pods/Target Support Files/Pods-SmartCard/Pods-SmartCard.release.xcconfig"; sourceTree = "<group>"; };
-		E52089A4D13EA78FC26EC829 /* Pods-my_reader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-my_reader.release.xcconfig"; path = "Pods/Target Support Files/Pods-my_reader/Pods-my_reader.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9AB94F33AE8CFD92B1CAC089 /* Pods_SmartCard.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,6 +147,7 @@
 		18E3E0677CF620C5050074D4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5EE0E3BE6AEA9E53D7209AD5 /* Pods_SmartCard.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -153,8 +155,6 @@
 		9F8C7FFDDA3D9CB895BD62E3 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				7F4C7D0982206AFD988CF371 /* Pods-my_reader.debug.xcconfig */,
-				E52089A4D13EA78FC26EC829 /* Pods-my_reader.release.xcconfig */,
 				4D026C955CE830217DCDB2E3 /* Pods-SmartCard.debug.xcconfig */,
 				D90F925D10F5D18A45C3F32B /* Pods-SmartCard.release.xcconfig */,
 			);
